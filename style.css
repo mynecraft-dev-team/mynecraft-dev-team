@@ -7,6 +7,7 @@ body {
 }
 header {
   background: #26A69A;
+  position: fixed;
   color: white;
   font-family: sans-serif;
 }
