@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja" >
+<head>
+  <meta charset="UTF-8">
+  <title>僕らのminecraft | webページ開設のお知らせ</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css'><link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+<br>
+	<h2>
+		<b>&emsp;&emsp;僕らのMINECRAFT&emsp;&emsp;
+		</b>	
+	<a href="https://mynecraft-dev.github.io/about/index.html">About</a>&emsp;|&emsp;
+	<a href="https://mynecraft-dev.github.io/news/index.html">News</a>&emsp;|&emsp;
+	<a href="https://mynecraft-dev.github.io/create/index.html">create</a>&emsp;|&emsp;
+	<a href="https://mynecraft-dev.github.io/policy/index.html">policy</a>&emsp;|&emsp;
+	<a href="https://kagome24-development.github.io/contact/index.html">Contact</a>
+	</h2>
+<br>
+</header>
+<br>
+<h2><center><b>webページ開設のお知らせ&emsp;2023年5月5日</b></center></h2><br>
+<br>
+<h2>&emsp;&emsp;この度、僕らMinecraftのホームページが完成しました。
+<br>
+<br>&emsp;&emsp;まだホームページはスタートしたばかりなのでデザイン・レイアウトの変更などが頻繁に起き、<br>&emsp;&emsp;なおページが見づらい場合もあるかと思いますが、ご了承ください。
+<br>&emsp;&emsp;参加型企画などの情報を掲載できたらいいなと考えていますので定期的に見ていって頂けるとありがたいです。
+<br>&emsp;&emsp;今後とも、僕らのMinecraftをよろしくお願いいたします。</h2>
+<br>
+<br>
+<footer>
+<h3>Dis is Mynecraft-developer-links</h3><br>
+&emsp;<i class="fa-brands fa-twitter" style="color: #3f51b5;"></i><a href="https://www.twitter.com/@_mynecraft_">twitter</a>
+	<a href="https://www.youtube.com/@_mynecraft_"><i class="fa-brands fa-youtube" style="color: #ec4079;"></i>Youtube</a>
+<center>&copy;2023 mynecraft</center>
+		
+</footer>
+<script src="https://kit.fontawesome.com/6c05f8638a.js" crossorigin="anonymous"></script>
+<!-- partial -->
+  
+</body>
+</html>
