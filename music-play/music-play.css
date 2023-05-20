@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+body {
+	background: #26a39a;
+	color: white;
+	font-family: sans-family;
+	text-align: center;
+}
+header {
+  background: #607D8B;
+  font-family: sans-serif;
+}
+footer {
+	background:#EC4079;
+	color:black;
+	font-family:Ubuntu Mono;
+	text-align: center;
+}
+h2 {
+	font-family: sans-serif;
+	color: white;
+}
+a {
+	color: white;
+}
