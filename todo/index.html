@@ -1,116 +1,145 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TODO管理アプリ</title>
-  <style>
-    body {
-      font-family: sans-serif;
-    }
-    h1 {
-      text-align: center;
-    }
-    .container {
-      display: flex;
-      justify-content: center;
-    }
-    .column {
-      flex: 1;
-      padding: 0 10px;
-      border-right: 1px solid #000;
-    }
-    .column:last-child {
-      border-right: none;
-    }
-    .add-task {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-  </style>
+  <title>CodePen - Todo</title>
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css'>
+
 </head>
 <body>
-  <h1>TODO管理アプリ</h1>
-  <div class="add-task">
-    <input type="text" id="taskInput" placeholder="タスクを入力してください">
-    <button id="addTaskButton">追加</button>
-  </div>
-  <div class="container">
-    <div class="column" id="todoColumn">
-      <h2>未完了</h2>
-    </div>
-    <div class="column" id="doingColumn">
-      <h2>実装中</h2>
-    </div>
-    <div class="column" id="doneColumn">
-      <h2>完了</h2>
-    </div>
+<!-- partial:index.partial.html -->
+<title>僕らのMinecraft</title>
+<style>
+	body{
+		background: #2f4f4f;
+	color: white;
+	font-family: sans-family;
+	text-align: left;
+	}
+ header {
+  background: #26A69A;
+  color: white;
+  font-family: sans-serif;
+	text-align: center;
+}
+ footer {
+	background:#708090;
+	color:black;
+	font-family: Ubuntu;
+	text-align: center;
+}
+	a {
+		color: white;
+	}
+</style>
+<header>
+	<br>
+	<div><b>&emsp;&emsp;僕らのMINECRAFT&emsp;&emsp;
+		</b>
+		<a href="https://mynecraft.jp/about/index.html">About</a>&emsp;|&emsp;
+	<a href="https://mynecraft.jp/news/index.html">News</a>&emsp;|&emsp;
+	<a href="https://mynecraft.jp/create/index.html">Create</a>&emsp;|&emsp;
+	<a href="https://mynecraft.jp/policy/index.html">Policy</a>&emsp;|&emsp;
+	<a href="https://mynecraft.jp/contact/index.html">Contact</a>
+	<br><br>
+</header>
+<div style="font-family: sans-serif;">
+	
+  <title>Tasks</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+		<center>
+			<h4 style="font-size: 2em;"><b>Tasks</b></h4>
+				<form @submit.prevent="addTask">
+      <input type="text" v-model="newTask" placeholder="タスクを入力してください">
+    <button type="submit" class="button is-light">追加</button>
+				</form>
+		</center>
+    <h5 style="font-size: 1.5em;"><b>未進行</b></h5>
+    <ul>
+      <li v-for="(task, index) in tasks.filter(task => task.status === '未進行')" :key="index">
+        {{ task.title }}
+        <button @click="changeStatus(index, '進行中')">進行中</button>
+        <button @click="changeStatus(index, '完了')">完了</button>
+        <button @click="deleteTask(index)">削除</button>
+      </li>
+    </ul>
+
+		<h5 style="font-size: 1.5em;"><b>進行中</b></h5>
+    <ul>
+      <li v-for="(task, index) in tasks.filter(task => task.status === '進行中')" :key="index">
+        {{ task.title }}
+        <button @click="changeStatus(index, '未進行')">未進行</button>
+        <button @click="changeStatus(index, '完了')">完了</button>
+        <button @click="deleteTask(index)">削除</button>
+      </li>
+    </ul>
+
+		<h5 style="font-size: 1.5em;"><b>完了</b></h5>
+    <ul>
+      <li v-for="(task, index) in tasks.filter(task => task.status === '完了')" :key="index">
+        {{ task.title }}
+        <button @click="changeStatus(index, '未進行')">未進行</button>
+        <button @click="changeStatus(index, '進行中')">進行中</button>
+        <button @click="deleteTask(index)">削除</button>
+      </li>
+    </ul>
   </div>
 
   <script>
-    const addTaskButton = document.getElementById("addTaskButton");
-    const taskInput = document.getElementById("taskInput");
-    const todoColumn = document.getElementById("todoColumn");
-    const doingColumn = document.getElementById("doingColumn");
-    const doneColumn = document.getElementById("doneColumn");
-
-    function createTaskElement(taskText) {
-      const taskWrapper = document.createElement("div");
-      taskWrapper.classList.add("task");
-
-      const task = document.createElement("span");
-      task.innerText = taskText;
-
-      const doingCheckbox = document.createElement("input");
-      doingCheckbox.type = "checkbox";
-      doingCheckbox.classList.add("doing-checkbox");
-      doingCheckbox.addEventListener("change", () => {
-        if (doingCheckbox.checked) {
-          doneCheckbox.checked = false;
-          doingColumn.appendChild(taskWrapper);
-        } else {
-          todoColumn.appendChild(taskWrapper);
+    new Vue({
+      el: '#app',
+      data: {
+        tasks: [],
+        newTask: ''
+      },
+      mounted() {
+        this.loadTasks();
+      },
+      methods: {
+        addTask() {
+          if (this.newTask !== '') {
+            this.tasks.push({
+              title: this.newTask,
+              status: '未進行'
+            });
+            this.newTask = '';
+            this.saveTasks();
+          }
+        },
+        changeStatus(index, newStatus) {
+          this.tasks[index].status = newStatus;
+          this.saveTasks();
+        },
+        deleteTask(index) {
+          this.tasks.splice(index, 1);
+          this.saveTasks();
+        },
+        saveTasks() {
+          localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        },
+        loadTasks() {
+          const savedTasks = localStorage.getItem('tasks');
+          if (savedTasks) {
+            this.tasks = JSON.parse(savedTasks);
+          }
         }
-      });
-
-      const doneCheckbox = document.createElement("input");
-      doneCheckbox.type = "checkbox";
-      doneCheckbox.classList.add("done-checkbox");
-      doneCheckbox.addEventListener("change", () => {
-        if (doneCheckbox.checked) {
-          doingCheckbox.checked = false;
-          doneColumn.appendChild(taskWrapper);
-        } else {
-          todoColumn.appendChild(taskWrapper);
-        }
-      });
-
-      taskWrapper.appendChild(doingCheckbox);
-      taskWrapper.appendChild(doneCheckbox);
-      taskWrapper.appendChild(task);
-
-      return taskWrapper;
-    }
-
-    addTaskButton.addEventListener("click", () => {
-      const taskText = taskInput.value.trim();
-      if (!taskText) {
-        alert("タスクを入力してください");
-        return;
-      }
-
-      const taskElement = createTaskElement(taskText);
-      todoColumn.appendChild(taskElement);
-      taskInput.value = "";
-    });
-
-    taskInput.addEventListener("keyup", (event) => {
-      if (event.key === "Enter") {
-        addTaskButton.click();
       }
     });
+  </script>	
+ 
+</div>
+<footer>
+	<p>Dis is Mynecraft-developer-links</p><br>
+	&emsp;<i class="fa-brands fa-twitter" style="color: #3f51b5;"></i><a href="https://www.twitter.com/@_mynecraft_">twitter</a>
+	<a href="https://www.youtube.com/@_mynecraft_"><i class="fa-brands fa-youtube" style="color: #ec4079;"></i>Youtube</a>
+	<center>&copy;2023 mynecraft</center>
 
-  </script>
+</footer>
+<script src="https://kit.fontawesome.com/6c05f8638a.js" crossorigin="anonymous"></script>
+<!-- partial -->
+  
 </body>
 </html>
