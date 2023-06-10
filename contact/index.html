@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja" >
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>僕らのMinecraft(仮) - contact</title>
+  <title>CodePen - contact</title>
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
 
@@ -33,10 +33,6 @@
 	a {
 		color: white;
 	}
-
-	form {
-		font-family: sans-serif;
-	}
 </style>
 <header>
 	<br>
@@ -49,44 +45,48 @@
 		<a href="https://mynecraft.jp/contact/index.html">Contact</a>
 		<br><br>
 </header>
-	<br><br>
+<br><br>
 <div class="contact-form">
-	<p class="title" style="color: white; font-family: sans-serif;">────────── Contact ──────────</p>
+	<p class="title" style="color: white; font-family: sans-serif;">─────────────── Contact ───────────────</p>
+	<div class="contact-form" style="font-family: sans-serif;">
+		<form action="https://api.staticforms.xyz/submit" method="post"><input name="accessKey" type="hidden" value="c47d5d77-2b46-4297-8205-b1fc910e0393" /> <input name="subject" type="hidden" value="お問い合わせがありました。" />
+			<table style="border-collapse: collapse; width: 100%; border-color: #ffffff; border-style: solid;" border="3">
+				<tbody>
+					<tr>
+						<td style="width: 50%; text-align: center;"><strong style="color: #fff;">お名前</strong></td>
+						<td style="width: 50%; text-align: left;">
+							<div class="item"><label class="label style="></label> <input class="inputs" name="name" required="" type="text" /></div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 50%; text-align: center;"><strong style="color: #fff;">メールアドレス</strong></td>
+						<td style="width: 50%; text-align: left;">
+							<div class="item"><label class="label"></label> <input class="inputs" name="email" type="email" /></div>
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 50%; text-align: center;"><strong style="color: #fff;">ご質問</strong></td>
+						<td style="width: 50%; text-align: left;">
+							<div class="item"><label class="label"></label><textarea cols="30" name="phone" rows="7"></textarea></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="hidden" name="redirectTo" value="https://mynecraft.jp/contact/done/">
+			<button class="button is-info is-outlined" type="submit">送信</button>
+			<button class="button is-danger is-outlined" type="reset">リセット</button>
+		</form>
+	</div>
 
-	<form action="https://api.staticforms.xyz/submit" method="post">
-		<input type="hidden" name="accessKey" value="1bc39850-07cd-4fa9-a756-9e86cebab7aa">
-		<input type="hidden" name="subject" value="Test">
-		<div class="item">
-			<label class="label style="color: white; font-family: sans-serif;">お名前</label>
-			<input type="text" class="inputs" name="name" required />
-		</div>
-		<br>
-		<div class="item" style="color: white; font-family: sans-serif;>
-			<label class="label">メールアドレス</label>
-			<input type="email" class="inputs" name="email" />
-		</div>
-		<br>
-		<div class="item" style="color: white; font-family: sans-serif;>
-			<label class="label">ご質問</label>
-			<textarea type="text" name="phone"></textarea>
-		</div>
-		<br>
-		<div class="button-area">
-			<input type="submit" value="送信" />
-			<input type="reset" value="リセット" />
-		</div>
-</div>
-</form>
-</div>
-<br><br><br>
-<footer>
-	<h6>Dis is Mynecraft-developer-links</h6><br>
-	&emsp;<i class="fa-brands fa-twitter" style="color: #3f51b5;"></i><a href="https://www.twitter.com/@_mynecraft_">twitter</a>
-	<a href="https://www.youtube.com/@_mynecraft_"><i class="fa-brands fa-youtube" style="color: #ec4079;"></i>Youtube</a>
-	<center>&copy;2023 mynecraft</center>
+	<br><br><br>
+	<footer>
+		<h6>Dis is Mynecraft-developer-links</h6><br>
+		&emsp;<i class="fa-brands fa-twitter" style="color: #3f51b5;"></i><a href="https://www.twitter.com/@_mynecraft_">twitter</a>
+		<a href="https://www.youtube.com/@_mynecraft_"><i class="fa-brands fa-youtube" style="color: #ec4079;"></i>Youtube</a>
+		<center>&copy;2023 mynecraft</center>
 
-</footer>
-<script src="https://kit.fontawesome.com/6c05f8638a.js" crossorigin="anonymous"></script>
+	</footer>
+	<script src="https://kit.fontawesome.com/6c05f8638a.js" crossorigin="anonymous"></script>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js'></script>
 </body>
